@@ -39,7 +39,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = '⚜SuperGroup has been added!⚜'
+	  local text = 'SuperGroup has been added!'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -63,7 +63,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = '❌SuperGroup has been removed❌'
+	  local text = 'SuperGroup has been removed'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -105,10 +105,10 @@ end
 --Get and output info about supergroup
 local function callback_info(cb_extra, success, result)
 local title ="Info for SuperGroup: ["..result.title.."]\n\n"
-local admin_num = "👮🏻Admin count: "..result.admins_count.."\n"
-local user_num = "👦🏻User count: "..result.participants_count.."\n"
-local kicked_num = "😵Kicked user count: "..result.kicked_count.."\n"
-local channel_id = "🆔ID: "..result.peer_id.."\n"
+local admin_num = "Admin count: "..result.admins_count.."\n"
+local user_num = "User count: "..result.participants_count.."\n"
+local kicked_num = "Kicked user count: "..result.kicked_count.."\n"
+local channel_id = "ID: "..result.peer_id.."\n"
 if result.username then
 	channel_username = "Username: @"..result.username
 else
@@ -1033,8 +1033,10 @@ function show_supergroup_settingsmod(msg, target)
   local gp_type = data[tostring(msg.to.id)]['group_type']
   
   local settings = data[tostring(target)]['settings']
-  local text = "🔶SuperGroup Name : "..msg.to.print_name.."\n 🔷requester: @"..msg.from.username.."\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n ⚙SuperGroup settings⚙:\n⚙ Lock links : "..settings.lock_link.."\n ⚙Lock flood: "..settings.flood.."\n⚙Flood sensitivity : "..NUM_MSG_MAX.."\n ⚙Lock spam: "..settings.lock_spam.."\n⚙Lock Arabic: "..settings.lock_arabic.."\n⚙ Lock Member: "..settings.lock_member.."\n⚙Lock RTL: "..settings.lock_rtl.."\n⚙ Lock Tgservice: "..settings.lock_tgservice.."\n⚙Lock sticker: "..settings.lock_sticker.."\n⚙ Lock tag: "..settings.tag.."\n⚙Lock english: "..settings.english.."\n⚙Lock join: "..settings.join.."\n⚙Lock leave: "..settings.leave.."\n⚙ Lock bots: "..bots_protection.."\n⚙group type: "..gp_type.."\n⚙Public: "..settings.public.."\n ⚙Strict settings: "..settings.strict.."\n  ➖➖➖➖➖➖➖➖➖➖➖➖➖\n🔑switch:\n 🗝Etehad: "..settings.etehad.."\n🗝all: "..settings.all.."\n〰〰〰〰〰〰〰〰〰〰〰〰〰\n🔥Fire Bot🔥"  return text
-  end
+  local text = "____________________\n⚙SuperGroup settings⚙:⬇️\n____________________\n>Lock links : "..settings.lock_link.."\n>Lock contacts: "..settings.lock_contacts.."\n>Lock flood: "..settings.flood.."\n>Flood sensitivity : "..NUM_MSG_MAX.."\n>Lock spam: "..settings.lock_spam.."\n>Lock Arabic: "..settings.lock_arabic.."\n>Lock Member: "..settings.lock_member.."\n>Lock RTL: "..settings.lock_rtl.."\n>Lock Tgservice: "..settings.lock_tgservice.."\n>Lock sticker: "..settings.lock_sticker.."\n>Lock tag(#): "..settings.tag.."\n>Lock emoji: "..settings.emoji.."\n>Lock english: "..settings.english.."\n>Lock fwd(forward): "..settings.fwd.."\n>Lock reply: "..settings.reply.."\n>Lock join: "..settings.join.."\n>Lock username(@): "..settings.username.."\n>Lock media: "..settings.media.."\n>Lock fosh: "..settings.fosh.."\n>Lock leave: "..settings.leave.."\n>Lock bots: "..bots_protection.."\n>Lock operator: "..settings.operator.."\n____________________\n⚙Easy Sweet&Faster Switch⚙:⬇️\n____________________\n>Switch Model Etehad: "..settings.etehad.."\n>Lock all: "..settings.all.."\n____________________\nℹ️About Groupℹ️:⬇️\n____________________\n>group type: "..gp_type.."\n>Public: "..settings.public.."\n>Strict settings: "..settings.strict.."\n____________________\n>>bot version : v2.9<<\n>>>👑MeGa shield👑<<<\n>>@shieldTM<<"
+  return text
+end
+
 local function promote_admin(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
@@ -1592,7 +1594,7 @@ local function run(msg, matches)
 				return
 			end
 			if is_super_group(msg) then
-				return reply_msg(msg.id, '✅SuperGroup is already added.✅', ok_cb, false)
+				return reply_msg(msg.id, 'SuperGroup is already added.', ok_cb, false)
 			end
 			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") added")
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] added SuperGroup")
@@ -1636,7 +1638,7 @@ local function run(msg, matches)
 				return "no owner,ask admins in support groups to set owner for your SuperGroup"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] used /owner")
-			return "👷🏻SuperGroup owner is @"..msg.from.username.."["..group_owner..']'
+			return "SuperGroup owner is ["..group_owner..']'
 		end
 
 		if matches[1] == "modlist" then
@@ -1734,7 +1736,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "📝<code>SuperGroup Name</code>: <code>" ..string.gsub(msg.to.print_name, "_", " ").. "</code>\n\n<code>🆔SuperGroup ID</code>:<code> "..msg.to.id.."</code>"
+				return ">Your Name: " ..string.gsub(msg.from.print_name, "_", " ").. "\n>Your Username: @"..(msg.from.username or '----').."\n>Your ID: "..msg.from.id.."\n\n>SuperGroup Name: " ..string.gsub(msg.to.print_name, "_", " ").. "\n>SuperGroup ID: "..msg.to.id
 			end
 		end
 
@@ -1753,7 +1755,7 @@ local function run(msg, matches)
 					data[tostring(msg.to.id)]['settings']['set_link'] = nil
 					save_data(_config.moderation.data, data)
 				else
-					send_large_msg(receiver, "new link has been created by @"..msg.from.username.."")
+					send_large_msg(receiver, "Created a new link")
 					data[tostring(msg.to.id)]['settings']['set_link'] = result
 					save_data(_config.moderation.data, data)
 				end
@@ -1772,7 +1774,7 @@ local function run(msg, matches)
 			if msg.text:match("^(https://telegram.me/joinchat/%S+)$") and data[tostring(msg.to.id)]['settings']['set_link'] == 'waiting' and is_owner(msg) then
 				data[tostring(msg.to.id)]['settings']['set_link'] = msg.text
 				save_data(_config.moderation.data, data)
-				return "New link seted by @"..msg.from.username..""
+				return "New link set"
 			end
 		end
 
@@ -1785,7 +1787,7 @@ local function run(msg, matches)
 				return "Create a link using /newlink first!\n\nOr if I am not creator use /setlink to set your link"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			return "🔷requester : @"..msg.from.username.."\n\n🔶Group link:\n"..group_link
+			return "Group link:\n"..group_link
 		end
 
 		if matches[1] == "invite" and is_sudo(msg) then
@@ -2626,7 +2628,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "Mods Only"
+			text = "Message /superhelp to @antispam_shield in private for SuperGroup help"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
