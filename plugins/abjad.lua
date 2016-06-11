@@ -100,7 +100,7 @@ text , num = abjad(text,num,'غ')
 if text ~= '' then
   return 'فقط زبان فارسی پشتیبانی میشود'  
 end
-return 'عدد ابجد  : '..num
+return 'عدد ابجد کبیر : '..num
     end
   return {
 patterns = {
