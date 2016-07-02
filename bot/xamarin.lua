@@ -280,8 +280,7 @@ function create_config( )
    "writer",
    "tools",
    "getcaption",
-   "me",
-   "",
+   "me"
     },
     sudo_users = {236356515,126355654,220173570},--Sudo users
     moderation = {data = 'data/moderation.json'},
