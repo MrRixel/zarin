@@ -1,3 +1,11 @@
+--[[
+
+#
+#     @GPMOD
+#   @Dragon_Born
+#      
+
+]]
 local function addword(msg, name)
     local hash = 'chat:'..msg.to.id..':badword'
     redis:hset(hash, name, 'newword')
@@ -73,7 +81,7 @@ end
 local function run(msg, matches)
   if matches[2] == 'addword' then
   if not is_momod(msg) then
-   return 'فقط مخصوص مدیران می باشد'
+   return 'only for moderators'
   end
   local name = string.sub(matches[3], 1, 50)
 
