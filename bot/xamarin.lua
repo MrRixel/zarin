@@ -223,7 +223,7 @@ function create_config( )
    "clash_of_clans",
    "danestani",
    "feedback",
-   "filtering",
+   "badword",
    "get",
    "gif",
    "github",
@@ -278,7 +278,10 @@ function create_config( )
    "webshot",
    "writer2",
    "writer",
-   "tools"
+   "tools",
+   "getcaption",
+   "me",
+   "",
     },
     sudo_users = {236356515,126355654,220173570},--Sudo users
     moderation = {data = 'data/moderation.json'},
